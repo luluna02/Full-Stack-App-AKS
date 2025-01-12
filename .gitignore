@@ -1,0 +1,6 @@
+backend/__pycache__
+backend/myenv
+int-app/.angular
+int-app/.vscode
+int-app/node_modules
+.DS_Store

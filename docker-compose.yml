@@ -1,0 +1,56 @@
+version: '3.9'
+
+services:
+  db:
+    container_name: postgres_container
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+  
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: luna.fadhli.lf@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+    networks:
+      - app-network
+
+  flask_app:
+    platform: linux/amd64
+    build: ./backend 
+    container_name: flask_container
+    restart: always
+    ports:
+      - "5000:5000"  
+    depends_on:
+      - db
+    environment:
+      DB_URL: postgresql://root:root@db:5432/test
+    networks:
+      - app-network
+
+  angular_app:
+    platform: linux/amd64
+    build: 
+      context: ./int-app
+    container_name: angular_container
+    ports:
+      - "8080:80"
+    depends_on:
+      - flask_app
+    environment:
+      BACKEND_URL: "http://flask-service:5000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-app-deployment
+  labels:
+    name: angular-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: angular-app
+  template:
+    metadata:
+      labels:
+        name: angular-app
+    spec:
+      containers:
+        - name: angular-app
+          image: luluna02/angular_frontend
+          ports:
+            - containerPort: 80
+          env:
+            - name: BACKEND_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: angular-config
+                  key: BACKEND_URL
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: angular-config 
+data:
+  BACKEND_URL: "http://api-todo.zapto.org"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: angular-service
+spec:
+  type: ClusterIP
+  selector:
+    name: angular-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
