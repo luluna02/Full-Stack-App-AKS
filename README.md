@@ -34,7 +34,7 @@ To deploy the application using Kubernetes, use the YAML files provided in the `
 ### 2. Containers deployments on AKS  
 ![Application on AKS](https://github.com/luluna02/Full-Stack-App-AKS/blob/42f3b8e6c67d5ee6b540e998c1322b113254e07a/Assets/Screenshot%202025-01-13%20at%208.24.13%E2%80%AFPM.png) 
 
-### 2. Containers orchestration on AKS using Ingresses.  
+### 3. Containers orchestration on AKS using Ingresses.  
 ![Application with ingresses](https://github.com/luluna02/Full-Stack-App-AKS/blob/a129abeac884b81479bde2c6f1dad2018453d9a1/Assets/Screenshot%202025-01-13%20at%208.34.38%E2%80%AFPM.png)
 
 ### Steps to Deploy  
