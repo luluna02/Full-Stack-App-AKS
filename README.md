@@ -51,6 +51,8 @@ To deploy the application using Kubernetes, use the YAML files provided in the `
    ```
 3. **Apply the YAML files in the correct order**:
 
+   Deploy PostgreSQL and pgAdmin, Flask backend, Angular frontend:
+
    ```bash
    kubectl apply -f pgadmin-postgres.yaml 
    kubectl apply -f flask.yaml
