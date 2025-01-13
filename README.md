@@ -41,7 +41,7 @@ To deploy the application using Kubernetes, use the YAML files provided in the `
 
 1. **Clone the repository**: 
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git  
+   git clone https://github.com/luluna02/Full-Stack-App-AKS.git 
    cd your-repo-name
    ```
 2. **Navigate to the k8s folder**:
